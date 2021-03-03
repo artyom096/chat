@@ -5,10 +5,12 @@ const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server, { cors: { origin: "*" } })
 
+const port = process.env.PORT || 9999
 
 const rooms = new Map()
 
 app.use(express.json())
+
 
 app.get('/rooms/:id', (req, res) => {
     const { id: roomId } = req.params
@@ -63,7 +65,7 @@ io.on('connection', socket => {
     })
 })
 
-server.listen(9999, err => {
+server.listen(port, err => {
     if (err) {
         throw Error(err)
     }
