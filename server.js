@@ -7,10 +7,12 @@ const io = require('socket.io')(server, { cors: { origin: "*" } })
 
 const port = process.env.PORT || 9999
 
+app.use(express.static(path.join(__dirname, './build')))
+
 const rooms = new Map()
 
 app.use(express.json())
-
+app.use(express.static('public'))
 
 app.get('/rooms/:id', (req, res) => {
     const { id: roomId } = req.params
