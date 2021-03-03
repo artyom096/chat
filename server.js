@@ -7,7 +7,7 @@ const io = require('socket.io')(server, { cors: { origin: "*" } })
 
 const port = process.env.PORT || 9999
 
-app.use(express.static("public"))
+app.use(express.static("./build"))
 
 const rooms = new Map()
 
